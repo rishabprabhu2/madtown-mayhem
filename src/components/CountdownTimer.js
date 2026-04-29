@@ -10,12 +10,7 @@ function CountdownTimer() {
     const difference = targetDate - now;
 
     if (difference <= 0) {
-      return {
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0
-      };
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
     }
 
     return {
@@ -34,42 +29,28 @@ function CountdownTimer() {
     return () => clearInterval(timer);
   }, []);
 
+  const countdownItems = [
+    { label: "Days", value: timeLeft.days },
+    { label: "Hours", value: timeLeft.hours },
+    { label: "Minutes", value: timeLeft.minutes },
+    { label: "Seconds", value: timeLeft.seconds }
+  ];
+
   return (
     <Container className="my-5">
       <h2 className="section-title text-center mb-4">Countdown to Mayhem</h2>
+
       <Row className="g-3 text-center">
-        <Col md={3} xs={6}>
-          <Card className="count-card">
-            <Card.Body>
-              <h3>{timeLeft.days}</h3>
-              <p>Days</p>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={3} xs={6}>
-          <Card className="count-card">
-            <Card.Body>
-              <h3>{timeLeft.hours}</h3>
-              <p>Hours</p>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={3} xs={6}>
-          <Card className="count-card">
-            <Card.Body>
-              <h3>{timeLeft.minutes}</h3>
-              <p>Minutes</p>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col md={3} xs={6}>
-          <Card className="count-card">
-            <Card.Body>
-              <h3>{timeLeft.seconds}</h3>
-              <p>Seconds</p>
-            </Card.Body>
-          </Card>
-        </Col>
+        {countdownItems.map((item) => (
+          <Col md={3} xs={6} key={item.label}>
+            <Card className="count-card animated-count-card">
+              <Card.Body>
+                <h3>{item.value}</h3>
+                <p>{item.label}</p>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))}
       </Row>
     </Container>
   );

@@ -1,15 +1,19 @@
 import { useState } from "react";
-import { Container, Form, Button, Alert } from "react-bootstrap";
+import { Container, Form, Button, Modal } from "react-bootstrap";
 
 function TicketForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [ticketType, setTicketType] = useState("General Admission");
-  const [submitted, setSubmitted] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
-    setSubmitted(true);
+    setShowConfirmation(true);
+  }
+
+  function handleClose() {
+    setShowConfirmation(false);
     setName("");
     setEmail("");
     setTicketType("General Admission");
@@ -18,12 +22,6 @@ function TicketForm() {
   return (
     <Container className="my-4">
       <h2 className="section-title mb-4">Purchase Tickets</h2>
-
-      {submitted && (
-        <Alert variant="success">
-          Your ticket request has been submitted successfully!
-        </Alert>
-      )}
 
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="ticketName">
@@ -61,9 +59,24 @@ function TicketForm() {
         </Form.Group>
 
         <Button variant="danger" type="submit">
-          Submit
+          Reserve Ticket
         </Button>
       </Form>
+
+      <Modal show={showConfirmation} onHide={handleClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Ticket Reserved!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          🎉 Thanks, {name}! Your {ticketType} ticket request for Madtown Mayhem has been submitted.
+          A confirmation would be sent to {email}.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleClose}>
+            Done
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   );
 }
