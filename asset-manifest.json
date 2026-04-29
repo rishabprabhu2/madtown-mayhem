@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/madtown-mayhem/static/css/main.89fb26c9.css",
-    "main.js": "/madtown-mayhem/static/js/main.113c789b.js",
+    "main.css": "/madtown-mayhem/static/css/main.0a3033e6.css",
+    "main.js": "/madtown-mayhem/static/js/main.998fe17d.js",
     "index.html": "/madtown-mayhem/index.html",
-    "main.89fb26c9.css.map": "/madtown-mayhem/static/css/main.89fb26c9.css.map",
-    "main.113c789b.js.map": "/madtown-mayhem/static/js/main.113c789b.js.map"
+    "main.0a3033e6.css.map": "/madtown-mayhem/static/css/main.0a3033e6.css.map",
+    "main.998fe17d.js.map": "/madtown-mayhem/static/js/main.998fe17d.js.map"
   },
   "entrypoints": [
-    "static/css/main.89fb26c9.css",
-    "static/js/main.113c789b.js"
+    "static/css/main.0a3033e6.css",
+    "static/js/main.998fe17d.js"
   ]
 }
